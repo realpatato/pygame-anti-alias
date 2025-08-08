@@ -2,6 +2,7 @@
 ''' IMPORTS '''
 #needed for outputting visual
 import pygame
+import surface_creator as sc
 
 ''' PYGAME SETUP '''
 #initiates the pygame module
@@ -14,6 +15,9 @@ screen_height = 301
 screen = pygame.display.set_mode((screen_width, screen_height))
 #changes the caption of the screen
 pygame.display.set_caption("anti-aliasing testing")
+
+surf_array = sc.create_surf_array(300, 100)
+drawing = sc.create_surface(surf_array)
 
 ''' GAME LOOP SETUP '''
 #clock for controlling frame rate
@@ -37,6 +41,10 @@ while keep_playing:
 
     # Anti-aliased line
     pygame.draw.aaline(screen, (255, 255, 255), (50, 70), (350, 270))
+
+    screen.blit(drawing, (0, 0))
+
+    pygame.draw.rect(screen, (255, 0, 0), drawing.get_rect(), 1)
 
     #update the screen
     pygame.display.update()
