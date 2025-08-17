@@ -8,9 +8,6 @@ def create_surf_array(width, height):
     #creates an array full of small lists representing pixels
     #the pixels store rgba values
     surf_array = np.zeros((width, height, 4), dtype=np.uint8)
-    for i in range(10):
-        for k in range(10):
-            surf_array[i + 100][k + 20] = [255, 0, 0, 255]
     #returns the array
     return surf_array
 
