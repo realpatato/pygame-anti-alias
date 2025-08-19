@@ -34,6 +34,9 @@ while keep_playing:
     
     screen.fill((0, 0, 0))
 
+    draw.rect(screen, (255, 0, 0), (20, 20, 100, 50), 5)
+    pygame.draw.rect(screen, (255, 0, 0), (20, 120, 100, 50), 5)
+
     '''
     Here is a list of tests that you can use. They each have pygame example with them, for comparison
     *** Basic Line Tests ***
