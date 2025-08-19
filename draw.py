@@ -23,19 +23,37 @@ def line(surface, color, start_pos, end_pos, width: int=1):
     if width >= 0:
         #create the surface
         surf_array = sc.create_surf_array(surface.get_width(), surface.get_height())
+        #handle width
+        width_begin = -1 * ((width - 1) // 2)
         #determines if the line is straight and if it is vertical or horizontal
         if start_pos[0] == end_pos[0]:
-            for i in range(abs(start_pos[1] - end_pos[1]) + 1):
-                if start_pos[1] > end_pos[1]:
-                    surf_array[start_pos[0]][i + end_pos[1]] = [color[0], color[1], color[2], 255]
-                else:    
-                    surf_array[start_pos[0]][i + start_pos[1]] = [color[0], color[1], color[2], 255]
+            #iterates over each line in the width
+            for w in range(width):
+                #iterates over each pixel
+                for i in range(abs(start_pos[1] - end_pos[1]) + 1):
+                    #checks if start pos is greater than end
+                    if start_pos[1] > end_pos[1]:
+                        #changes y addition accordingly
+                        surf_array[start_pos[0] + width_begin][i + end_pos[1]] = [color[0], color[1], color[2], 255]
+                    else:
+                        #changes y addition accordingly
+                        surf_array[start_pos[0] + width_begin][i + start_pos[1]] = [color[0], color[1], color[2], 255]
+                #shifts width begin over by one
+                width_begin += 1
         elif start_pos[1] == end_pos[1]:
-            for i in range(abs(start_pos[0] - end_pos[0]) + 1):
-                if start_pos[0] > end_pos[0]:
-                    surf_array[i + end_pos[0]][start_pos[1]] = [color[0], color[1], color[2], 255]
-                else:    
-                    surf_array[i + start_pos[0]][start_pos[1]] = [color[0], color[1], color[2], 255]
+            #iterates over each line in the width
+            for w in range(width):
+                #iterates over each pixel
+                for i in range(abs(start_pos[0] - end_pos[0]) + 1):
+                    #checks if start pos is greater than end
+                    if start_pos[0] > end_pos[0]:
+                        #changes x addition accordingly
+                        surf_array[i + end_pos[0]][start_pos[1] + width_begin] = [color[0], color[1], color[2], 255]
+                    else:
+                        #changes x addition accordingly
+                        surf_array[i + start_pos[0]][start_pos[1] + width_begin] = [color[0], color[1], color[2], 255]
+                #shifts width begin over by one
+                width_begin += 1
         #converts the array to a surface
         output_surface = sc.create_surface(surf_array)
         #outputs the surface

@@ -1,4 +1,4 @@
-''' OUTPUT.PY - Used for outputing created images/frames '''
+''' OUTPUT.PY - Used for outputing created images/frames, for testing purposes '''
 ''' IMPORTS '''
 #needed for outputting visual
 import pygame
@@ -22,9 +22,6 @@ clock = pygame.time.Clock()
 #variable for controlling game loop
 keep_playing = True
 
-for i in range(-100):
-    print("Iterate")
-    print(i)
 
 ''' GAME LOOP '''
 while keep_playing:
@@ -37,19 +34,49 @@ while keep_playing:
     
     screen.fill((0, 0, 0))
 
-    #pygame.draw.line(screen, (255, 255, 255), (250, 150), (50, 150))
-    
-    #print(4//2)
-
+    '''
+    Here is a list of tests that you can use. They each have pygame example with them, for comparison
+    *** Basic Line Tests ***
+    * Horizontal Lines *
     draw.line(screen, (255, 0, 0), (50, 150), (50, 250))
     draw.line(screen, (255, 0, 0), (52, 250), (52, 150))
     pygame.draw.line(screen, (255, 0, 0), (54, 250), (54, 150))
 
+    * Vertical Lines *
     draw.line(screen, (255, 0, 0), (150, 50), (250, 50))
     draw.line(screen, (255, 0, 0), (250, 52), (150, 52))
     pygame.draw.line(screen, (255, 0, 0), (250, 54), (150, 54))
 
-    #draw.rect(screen, (255, 0, 0), (100, 20, 100, 50))
+    *** Lines with Widths Tests ***
+    * Horizontal Lines Even Width
+    draw.line(screen, (255, 255, 255), (150, 50), (250, 50), 4)
+    draw.line(screen, (255, 0, 0), (150, 50), (250, 50))
+    pygame.draw.line(screen, (255, 255, 255), (250, 60), (150, 60), 4)
+    pygame.draw.line(screen, (255, 0, 0), (250, 60), (150, 60))
+    
+    * Horizontal Lines Odd Width *
+    draw.line(screen, (255, 255, 255), (150, 50), (250, 50), 5)
+    draw.line(screen, (255, 0, 0), (150, 50), (250, 50))
+    pygame.draw.line(screen, (255, 255, 255), (250, 60), (150, 60), 5)
+    pygame.draw.line(screen, (255, 0, 0), (250, 60), (150, 60))
+    
+    * Vertical Lines Even Width *
+    draw.line(screen, (255, 255, 255), (50, 150), (50, 250), 4)
+    draw.line(screen, (255, 0, 0), (50, 150), (50, 250))
+    pygame.draw.line(screen, (255, 255, 255), (60, 250), (60, 150), 4)
+    pygame.draw.line(screen, (255, 0, 0), (60, 250), (60, 150))
+    
+    * Vertical Lines Odd Width *
+    draw.line(screen, (255, 255, 255), (50, 150), (50, 250), 5)
+    draw.line(screen, (255, 0, 0), (50, 150), (50, 250))
+    pygame.draw.line(screen, (255, 255, 255), (60, 250), (60, 150), 5)
+    pygame.draw.line(screen, (255, 0, 0), (60, 250), (60, 150))
+
+    *** Basic Rect Tests ***
+    * Filled Rect *
+    draw.rect(screen, (255, 0, 0), (100, 20, 100, 50))
+    pygame.draw.rect(screen, (255, 0, 0), (100, 20, 100, 50))
+    '''
 
     #update the screen
     pygame.display.update()
