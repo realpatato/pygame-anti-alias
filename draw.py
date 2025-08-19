@@ -16,3 +16,27 @@ def rect(surface, color, rect, border_width=0):
     output_surface = sc.create_surface(surf_array)
     #outputs the surface
     surface.blit(output_surface, (0, 0))
+
+def line(surface, color, start_pos, end_pos, width: int=1):
+    ''' Draws a line! '''
+    #determines if a line can be drawn
+    if width >= 0:
+        #create the surface
+        surf_array = sc.create_surf_array(surface.get_width(), surface.get_height())
+        #determines if the line is straight and if it is vertical or horizontal
+        if start_pos[0] == end_pos[0]:
+            for i in range(abs(start_pos[1] - end_pos[1]) + 1):
+                if start_pos[1] > end_pos[1]:
+                    surf_array[start_pos[0]][i + end_pos[1]] = [color[0], color[1], color[2], 255]
+                else:    
+                    surf_array[start_pos[0]][i + start_pos[1]] = [color[0], color[1], color[2], 255]
+        elif start_pos[1] == end_pos[1]:
+            for i in range(abs(start_pos[0] - end_pos[0]) + 1):
+                if start_pos[0] > end_pos[0]:
+                    surf_array[i + end_pos[0]][start_pos[1]] = [color[0], color[1], color[2], 255]
+                else:    
+                    surf_array[i + start_pos[0]][start_pos[1]] = [color[0], color[1], color[2], 255]
+        #converts the array to a surface
+        output_surface = sc.create_surface(surf_array)
+        #outputs the surface
+        surface.blit(output_surface, (0, 0))
