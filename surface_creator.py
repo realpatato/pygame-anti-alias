@@ -11,6 +11,27 @@ def create_surf_array(width, height):
     #returns the array
     return surf_array
 
+def change_pixel(surf_array, x, y, color):
+    ''' Function used to modify a pixel at a given coordinate '''
+    #tries so that index errors are caught, specifically for going off-screen
+    try:
+        #checks if x and y are negative
+        if x < 0 or y < 0:
+            #raises index error (prevents wrapping)
+            raise IndexError
+        #tries so that index errors for color are caught
+        try:
+            #changes the pixel at the coordinate
+            surf_array[x][y] = [color[0], color[1], color[2], color[3]]
+        #excepts index errors for colors with "a" value
+        except IndexError:
+            #changes the pixel at the coordinate
+            surf_array[x][y] = [color[0], color[1], color[2], 255]
+    #excepts index errors for situations where position is invalid
+    except IndexError:
+        #pass since nothing has to be done
+        pass
+
 def create_surface(surf_array):
     ''' Function which converts a surf array to a surface '''
     #creates a copy of the surfarray, but the height and width are swapped

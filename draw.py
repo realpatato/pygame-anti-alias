@@ -18,19 +18,9 @@ def line(surface, color, start_pos, end_pos, width: int=1):
                 for i in range(abs(start_pos[1] - end_pos[1]) + 1):
                     #checks if start pos is greater than end
                     if start_pos[1] > end_pos[1]:
-                        #tries, so that indexerrors are caught
-                        try:
-                            #changes y addition accordingly
-                            surf_array[start_pos[0] + width_begin][i + end_pos[1]] = [color[0], color[1], color[2], 255]
-                        except IndexError:
-                            pass
+                        sc.change_pixel(surf_array, start_pos[0] + width_begin, i + end_pos[1], color)
                     else:
-                        #tries, so that indexerrors are caught
-                        try:
-                            #changes y addition accordingly
-                            surf_array[start_pos[0] + width_begin][i + start_pos[1]] = [color[0], color[1], color[2], 255]
-                        except IndexError:
-                            pass
+                        sc.change_pixel(surf_array, start_pos[0] + width_begin, i + start_pos[1], color)
                 #shifts width begin over by one
                 width_begin += 1
         elif start_pos[1] == end_pos[1]:
@@ -40,19 +30,9 @@ def line(surface, color, start_pos, end_pos, width: int=1):
                 for i in range(abs(start_pos[0] - end_pos[0]) + 1):
                     #checks if start pos is greater than end
                     if start_pos[0] > end_pos[0]:
-                        #tries, so that indexerrors are caught
-                        try:
-                            #changes x addition accordingly
-                            surf_array[i + end_pos[0]][start_pos[1] + width_begin] = [color[0], color[1], color[2], 255]
-                        except IndexError:
-                            pass
+                        sc.change_pixel(surf_array, i + end_pos[0], start_pos[1] + width_begin, color)
                     else:
-                        #tries, so that indexerrors are caught
-                        try:
-                            #changes x addition accordingly
-                            surf_array[i + start_pos[0]][start_pos[1] + width_begin] = [color[0], color[1], color[2], 255]
-                        except IndexError:
-                            pass
+                        sc.change_pixel(surf_array, i + start_pos[0], start_pos[1] + width_begin, color)
                 #shifts width begin over by one
                 width_begin += 1
         #converts the array to a surface
@@ -69,11 +49,7 @@ def rect(surface, color, rect, width: int=0):
         #draws it
         for i in range(rect[2]):
             for k in range(rect[3]):
-                #tries, so that indexerrors are caught
-                try:
-                    surf_array[i + rect[0]][k + rect[1]] = [color[0], color[1], color[2], 255]
-                except IndexError:
-                    pass
+                sc.change_pixel(surf_array, i + rect[0], k + rect[1], color)
     else:
         #get the max width
         #this prevents the outline from overflowing
