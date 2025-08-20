@@ -23,7 +23,7 @@ def change_pixel(surf_array, x, y, color):
         try:
             #changes the pixel at the coordinate
             surf_array[x][y] = [color[0], color[1], color[2], color[3]]
-        #excepts index errors for colors with "a" value
+        #excepts index errors for colors without "a" value
         except IndexError:
             #changes the pixel at the coordinate
             surf_array[x][y] = [color[0], color[1], color[2], 255]
