@@ -34,21 +34,18 @@ while keep_playing:
     
     screen.fill((0, 0, 0))
 
-    draw.rect(screen, (255, 0, 0), (20, 20, 100, 50), 5)
-    pygame.draw.rect(screen, (255, 0, 0), (20, 120, 100, 50), 5)
-
     '''
     Here is a list of tests that you can use. They each have pygame example with them, for comparison
     *** Basic Line Tests ***
     * Horizontal Lines *
-    draw.line(screen, (255, 0, 0), (50, 150), (50, 250))
-    draw.line(screen, (255, 0, 0), (52, 250), (52, 150))
-    pygame.draw.line(screen, (255, 0, 0), (54, 250), (54, 150))
-
-    * Vertical Lines *
     draw.line(screen, (255, 0, 0), (150, 50), (250, 50))
     draw.line(screen, (255, 0, 0), (250, 52), (150, 52))
     pygame.draw.line(screen, (255, 0, 0), (250, 54), (150, 54))
+    
+    * Vertical Lines *
+    draw.line(screen, (255, 0, 0), (50, 150), (50, 250))
+    draw.line(screen, (255, 0, 0), (52, 250), (52, 150))
+    pygame.draw.line(screen, (255, 0, 0), (54, 250), (54, 150))
 
     *** Lines with Widths Tests ***
     * Horizontal Lines Even Width
@@ -77,8 +74,12 @@ while keep_playing:
 
     *** Basic Rect Tests ***
     * Filled Rect *
-    draw.rect(screen, (255, 0, 0), (100, 20, 100, 50))
-    pygame.draw.rect(screen, (255, 0, 0), (100, 20, 100, 50))
+    draw.rect(screen, (255, 0, 0), (20, 20, 100, 50))
+    pygame.draw.rect(screen, (255, 0, 0), (20, 120, 100, 50))
+
+    * Outlined Rect *
+    draw.rect(screen, (255, 0, 0), (20, 20, 100, 50), 5)
+    pygame.draw.rect(screen, (255, 0, 0), (20, 120, 100, 50), 5)
     '''
 
     #update the screen
